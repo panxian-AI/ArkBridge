@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arkbridge"
+version = "0.1.0"
+description = "把 ArkLink 的 OneBot 11 中继给 AstrBot 这类只会当反向 WS 服务端的框架（零依赖）"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "panxian-AI" }]
+keywords = ["qq", "bot", "onebot", "astrbot", "arklink", "relay", "bridge"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: AsyncIO",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Communications :: Chat",
+]
+# 生产代码零第三方依赖：只靠标准库，下载下来就能跑
+dependencies = []
+
+[project.optional-dependencies]
+# 只有跑端到端测试才需要这两个真家伙
+test = ["pytest>=8", "aiocqhttp>=1.4", "quart>=0.19", "websockets>=12"]
+
+[project.urls]
+Homepage = "https://github.com/panxian-AI/ArkBridge"
+Repository = "https://github.com/panxian-AI/ArkBridge"
+Parent = "https://github.com/panxian-AI/ArkBot"
+Sibling = "https://github.com/panxian-AI/ArkLink"
+
+[project.scripts]
+arkbridge = "arkbridge.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["arkbridge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

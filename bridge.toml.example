@@ -1,0 +1,29 @@
+# ArkBridge 配置：把 ArkLink 的 OneBot 11 中继给 AstrBot（或任何只会当反向 WS 服务端的框架）
+#
+# 链路：QQ ↔ ArkLink ↗ ArkBridge ↘ AstrBot
+#                    （两头都是 ArkBridge 主动连出去）
+
+[[bridge]]
+name = "main"
+# ArkLink 的 OneBot 11 服务端（`arklink serve onebot` 的地址，短写也行：127.0.0.1:6700）
+arklink = "ws://127.0.0.1:6700/onebot/v11/ws"
+# AstrBot 的 aiocqhttp 反向 WS 地址（astrbot://127.0.0.1:6199 会自动补 /ws）
+astrbot = "ws://127.0.0.1:6199/ws"
+
+# 机器人 QQ 号。留 0 或删掉都行：ArkBridge 会连上 ArkLink 问 get_login_info 自己学。
+# 但 AstrBot 靠它判断「@ 的是不是我」，学不到就填这里。
+# self_id = 10001
+
+# ArkLink 的 access_token（没设就留空）
+# arklink_token = ""
+# AstrBot 里 aiocqhttp 平台的 ws_reverse_token，两边必须一致
+# astrbot_token = ""
+
+# api_timeout = 60      # 单条 API 超时（秒）
+# queue = 200           # AstrBot 断开期间缓存多少条事件
+# ping_interval = 20    # 心跳间隔（秒），0 = 关闭
+# ping_timeout = 60     # 多久收不到任何数据就判定僵死
+# reconnect_max = 60    # 重连退避上限（秒）
+
+[log]
+level = "INFO"
