@@ -81,6 +81,7 @@ ArkBridge 是**纯中继**：不跑插件、不管通道、不做重试发件箱
 |---|---|
 | 只要 AstrBot，QQ 通道用 ArkLink 顶着 | **ArkBridge**（本文） |
 | 想同时用 ArkBot 的插件 + AstrBot | ArkBot 的 `[compat]`（见 [ArkBot: AstrBot 接入](https://github.com/panxian-AI/ArkBot/blob/main/docs/guides/AstrBot接入.md)） |
+| 想让中继跑在手机上（省一台机器 / 随身带） | [ArkDroid](https://github.com/panxian-AI/ArkDroid)：APK 里内嵌的就是本项目的 `arkbridge` |
 | 用 NoneBot2 / Koishi | 不用本项目，它们能直连 ArkLink 的正向 WS |
 
 三条路的共同点：**AstrBot 侧一行代码都不用改**。
